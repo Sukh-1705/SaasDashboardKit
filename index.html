@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SaaS Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="light-theme">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <div class="logo__icon">
+                    <i data-feather="layers"></i>
+                </div>
+                <span class="logo__text">SaaSBoard</span>
+            </div>
+            <button class="sidebar__toggle" id="sidebarToggle">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar__nav">
+            <ul class="nav__list">
+                <li class="nav__item nav__item--active">
+                    <a href="index.html" class="nav__link">
+                        <i data-feather="home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="users.html" class="nav__link">
+                        <i data-feather="users"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="analytics.html" class="nav__link">
+                        <i data-feather="bar-chart-2"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="settings.html" class="nav__link">
+                        <i data-feather="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar__footer">
+            <div class="user-profile">
+                <div class="user-profile__avatar">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="User Avatar">
+                </div>
+                <div class="user-profile__info">
+                    <span class="user-profile__name">John Doe</span>
+                    <span class="user-profile__role">Admin</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="navbar">
+            <div class="navbar__left">
+                <button class="navbar__menu-toggle" id="menuToggle">
+                    <i data-feather="menu"></i>
+                </button>
+                <h1 class="navbar__title">Dashboard</h1>
+            </div>
+            
+            <div class="navbar__right">
+                <div class="navbar__search">
+                    <div class="search-box">
+                        <i data-feather="search"></i>
+                        <input type="text" placeholder="Search..." class="search-box__input">
+                    </div>
+                </div>
+                
+                <div class="navbar__actions">
+                    <button class="action-btn theme-toggle" id="themeToggle">
+                        <i data-feather="moon"></i>
+                    </button>
+                    
+                    <div class="dropdown notifications-dropdown">
+                        <button class="action-btn dropdown__trigger" id="notificationsBtn">
+                            <i data-feather="bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <div class="dropdown__menu" id="notificationsMenu">
+                            <div class="dropdown__header">
+                                <h3>Notifications</h3>
+                                <button class="btn-text">Mark all as read</button>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-item__icon">
+                                    <i data-feather="user-plus"></i>
+                                </div>
+                                <div class="notification-item__content">
+                                    <p>New user registered</p>
+                                    <span class="notification-item__time">2 minutes ago</span>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-item__icon">
+                                    <i data-feather="trending-up"></i>
+                                </div>
+                                <div class="notification-item__content">
+                                    <p>Revenue increased by 12%</p>
+                                    <span class="notification-item__time">1 hour ago</span>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-item__icon">
+                                    <i data-feather="alert-circle"></i>
+                                </div>
+                                <div class="notification-item__content">
+                                    <p>Server maintenance scheduled</p>
+                                    <span class="notification-item__time">3 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown profile-dropdown">
+                        <button class="profile-btn dropdown__trigger" id="profileBtn">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="Profile" class="profile-btn__avatar">
+                        </button>
+                        <div class="dropdown__menu" id="profileMenu">
+                            <div class="dropdown__header">
+                                <div class="profile-info">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Profile">
+                                    <div>
+                                        <h4>John Doe</h4>
+                                        <p>john@example.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="dropdown__item">
+                                <i data-feather="user"></i>
+                                <span>Profile</span>
+                            </a>
+                            <a href="settings.html" class="dropdown__item">
+                                <i data-feather="settings"></i>
+                                <span>Settings</span>
+                            </a>
+                            <a href="#" class="dropdown__item">
+                                <i data-feather="help-circle"></i>
+                                <span>Help</span>
+                            </a>
+                            <hr class="dropdown__divider">
+                            <a href="login.html" class="dropdown__item">
+                                <i data-feather="log-out"></i>
+                                <span>Sign out</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Dashboard Content -->
+        <div class="content">
+            <!-- Stats Cards -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card__icon stat-card__icon--primary">
+                        <i data-feather="users"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <h3 class="stat-card__value" data-target="12847">0</h3>
+                        <p class="stat-card__label">Total Users</p>
+                        <div class="stat-card__change stat-card__change--positive">
+                            <i data-feather="trending-up"></i>
+                            <span>+12.5%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card__icon stat-card__icon--success">
+                        <i data-feather="dollar-sign"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <h3 class="stat-card__value" data-target="89432">0</h3>
+                        <p class="stat-card__label">Revenue</p>
+                        <div class="stat-card__change stat-card__change--positive">
+                            <i data-feather="trending-up"></i>
+                            <span>+8.2%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card__icon stat-card__icon--warning">
+                        <i data-feather="shopping-cart"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <h3 class="stat-card__value" data-target="2341">0</h3>
+                        <p class="stat-card__label">Orders</p>
+                        <div class="stat-card__change stat-card__change--negative">
+                            <i data-feather="trending-down"></i>
+                            <span>-3.1%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card__icon stat-card__icon--info">
+                        <i data-feather="activity"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <h3 class="stat-card__value" data-target="94.2">0</h3>
+                        <p class="stat-card__label">Conversion Rate</p>
+                        <div class="stat-card__change stat-card__change--positive">
+                            <i data-feather="trending-up"></i>
+                            <span>+2.4%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Revenue Overview</h2>
+                        <div class="chart-controls">
+                            <button class="btn btn--small btn--outline">7D</button>
+                            <button class="btn btn--small btn--primary">30D</button>
+                            <button class="btn btn--small btn--outline">90D</button>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>User Growth</h2>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="userGrowthChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Recent Activity -->
+            <section class="activity-section">
+                <div class="section-header">
+                    <h2>Recent Activity</h2>
+                    <button class="btn btn--outline">View All</button>
+                </div>
+                
+                <div class="activity-timeline">
+                    <div class="activity-item">
+                        <div class="activity-item__icon activity-item__icon--success">
+                            <i data-feather="user-plus"></i>
+                        </div>
+                        <div class="activity-item__content">
+                            <h4>New user registered</h4>
+                            <p>Sarah Johnson joined the platform</p>
+                            <span class="activity-item__time">2 minutes ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-item__icon activity-item__icon--primary">
+                            <i data-feather="shopping-cart"></i>
+                        </div>
+                        <div class="activity-item__content">
+                            <h4>New order received</h4>
+                            <p>Order #1234 for $299.99</p>
+                            <span class="activity-item__time">15 minutes ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-item__icon activity-item__icon--warning">
+                            <i data-feather="alert-triangle"></i>
+                        </div>
+                        <div class="activity-item__content">
+                            <h4>System alert</h4>
+                            <p>High CPU usage detected on server 2</p>
+                            <span class="activity-item__time">1 hour ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-item__icon activity-item__icon--info">
+                            <i data-feather="mail"></i>
+                        </div>
+                        <div class="activity-item__content">
+                            <h4>Email campaign sent</h4>
+                            <p>Newsletter sent to 12,847 subscribers</p>
+                            <span class="activity-item__time">3 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal__header">
+                <h3 class="modal__title">Add New User</h3>
+                <button class="modal__close" id="modalClose">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <div class="modal__body">
+                <form class="form">
+                    <div class="form__group">
+                        <label class="form__label">Full Name</label>
+                        <input type="text" class="form__input" placeholder="Enter full name">
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label">Email</label>
+                        <input type="email" class="form__input" placeholder="Enter email address">
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label">Role</label>
+                        <select class="form__select">
+                            <option>Admin</option>
+                            <option>User</option>
+                            <option>Manager</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn--outline">Cancel</button>
+                <button class="btn btn--primary">Add User</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="js/script.js"></script>
+    <script src="charts/chart-config.js"></script>
+</body>
+</html>

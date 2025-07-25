@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users - SaaS Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="light-theme">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <div class="logo__icon">
+                    <i data-feather="layers"></i>
+                </div>
+                <span class="logo__text">SaaSBoard</span>
+            </div>
+            <button class="sidebar__toggle" id="sidebarToggle">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar__nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="index.html" class="nav__link">
+                        <i data-feather="home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a href="users.html" class="nav__link">
+                        <i data-feather="users"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="analytics.html" class="nav__link">
+                        <i data-feather="bar-chart-2"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="settings.html" class="nav__link">
+                        <i data-feather="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar__footer">
+            <div class="user-profile">
+                <div class="user-profile__avatar">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="User Avatar">
+                </div>
+                <div class="user-profile__info">
+                    <span class="user-profile__name">John Doe</span>
+                    <span class="user-profile__role">Admin</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="navbar">
+            <div class="navbar__left">
+                <button class="navbar__menu-toggle" id="menuToggle">
+                    <i data-feather="menu"></i>
+                </button>
+                <h1 class="navbar__title">Users</h1>
+            </div>
+            
+            <div class="navbar__right">
+                <div class="navbar__search">
+                    <div class="search-box">
+                        <i data-feather="search"></i>
+                        <input type="text" placeholder="Search users..." class="search-box__input" id="userSearch">
+                    </div>
+                </div>
+                
+                <div class="navbar__actions">
+                    <button class="action-btn theme-toggle" id="themeToggle">
+                        <i data-feather="moon"></i>
+                    </button>
+                    
+                    <div class="dropdown notifications-dropdown">
+                        <button class="action-btn dropdown__trigger" id="notificationsBtn">
+                            <i data-feather="bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <div class="dropdown__menu" id="notificationsMenu">
+                            <div class="dropdown__header">
+                                <h3>Notifications</h3>
+                                <button class="btn-text">Mark all as read</button>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-item__icon">
+                                    <i data-feather="user-plus"></i>
+                                </div>
+                                <div class="notification-item__content">
+                                    <p>New user registered</p>
+                                    <span class="notification-item__time">2 minutes ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown profile-dropdown">
+                        <button class="profile-btn dropdown__trigger" id="profileBtn">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="Profile" class="profile-btn__avatar">
+                        </button>
+                        <div class="dropdown__menu" id="profileMenu">
+                            <div class="dropdown__header">
+                                <div class="profile-info">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Profile">
+                                    <div>
+                                        <h4>John Doe</h4>
+                                        <p>john@example.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="dropdown__item">
+                                <i data-feather="user"></i>
+                                <span>Profile</span>
+                            </a>
+                            <a href="settings.html" class="dropdown__item">
+                                <i data-feather="settings"></i>
+                                <span>Settings</span>
+                            </a>
+                            <a href="login.html" class="dropdown__item">
+                                <i data-feather="log-out"></i>
+                                <span>Sign out</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Users Content -->
+        <div class="content">
+            <!-- Users Header -->
+            <div class="users-header">
+                <div class="users-header__left">
+                    <h2>User Management</h2>
+                    <p>Manage and monitor all users in your system</p>
+                </div>
+                <div class="users-header__right">
+                    <button class="btn btn--outline">
+                        <i data-feather="download"></i>
+                        Export
+                    </button>
+                    <button class="btn btn--primary" data-action="add-user">
+                        <i data-feather="plus"></i>
+                        Add User
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Users Stats -->
+            <div class="users-stats">
+                <div class="stat-card">
+                    <div class="stat-card__icon stat-card__icon--primary">
+                        <i data-feather="users"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <h3 class="stat-card__value" data-target="12847">0</h3>
+                        <p class="stat-card__label">Total Users</p>
+                        <div class="stat-card__change stat-card__change--positive">
+                            <i data-feather="trending-up"></i>
+                            <span>+12.5%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card__icon stat-card__icon--success">
+                        <i data-feather="user-check"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <h3 class="stat-card__value" data-target="11203">0</h3>
+                        <p class="stat-card__label">Active Users</p>
+                        <div class="stat-card__change stat-card__change--positive">
+                            <i data-feather="trending-up"></i>
+                            <span>+8.2%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card__icon stat-card__icon--warning">
+                        <i data-feather="user-plus"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <h3 class="stat-card__value" data-target="234">0</h3>
+                        <p class="stat-card__label">New This Month</p>
+                        <div class="stat-card__change stat-card__change--positive">
+                            <i data-feather="trending-up"></i>
+                            <span>+15.3%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card__icon stat-card__icon--info">
+                        <i data-feather="user-x"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <h3 class="stat-card__value" data-target="1644">0</h3>
+                        <p class="stat-card__label">Inactive Users</p>
+                        <div class="stat-card__change stat-card__change--negative">
+                            <i data-feather="trending-down"></i>
+                            <span>-2.1%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Users Table -->
+            <div class="users-table-container">
+                <div class="table-header">
+                    <div class="table-filters">
+                        <select class="form__select" id="roleFilter">
+                            <option value="">All Roles</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                            <option value="manager">Manager</option>
+                        </select>
+                        <select class="form__select" id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+                    <div class="table-pagination">
+                        <span class="pagination-info">Showing 1-10 of 12,847 users</span>
+                    </div>
+                </div>
+                
+                <div class="table-wrapper">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="checkbox">
+                                </th>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Last Active</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Users will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="table-footer">
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled>
+                            <i data-feather="chevron-left"></i>
+                        </button>
+                        <button class="pagination-btn pagination-btn--active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <span class="pagination-dots">...</span>
+                        <button class="pagination-btn">128</button>
+                        <button class="pagination-btn">
+                            <i data-feather="chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal__header">
+                <h3 class="modal__title">Add New User</h3>
+                <button class="modal__close" id="modalClose">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <div class="modal__body">
+                <form class="form" id="addUserForm">
+                    <div class="form__group">
+                        <label class="form__label">Full Name</label>
+                        <input type="text" class="form__input" placeholder="Enter full name" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label">Email</label>
+                        <input type="email" class="form__input" placeholder="Enter email address" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label">Role</label>
+                        <select class="form__select" required>
+                            <option value="">Select role</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                            <option value="manager">Manager</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label">Department</label>
+                        <select class="form__select">
+                            <option value="">Select department</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="sales">Sales</option>
+                            <option value="support">Support</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn--outline" type="button">Cancel</button>
+                <button class="btn btn--primary" type="submit" form="addUserForm">Add User</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="js/script.js"></script>
+    <script src="js/users.js"></script>
+</body>
+</html>

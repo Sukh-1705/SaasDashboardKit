@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - SaaS Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="light-theme">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <div class="logo__icon">
+                    <i data-feather="layers"></i>
+                </div>
+                <span class="logo__text">SaaSBoard</span>
+            </div>
+            <button class="sidebar__toggle" id="sidebarToggle">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar__nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="index.html" class="nav__link">
+                        <i data-feather="home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="users.html" class="nav__link">
+                        <i data-feather="users"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="analytics.html" class="nav__link">
+                        <i data-feather="bar-chart-2"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a href="settings.html" class="nav__link">
+                        <i data-feather="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar__footer">
+            <div class="user-profile">
+                <div class="user-profile__avatar">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="User Avatar">
+                </div>
+                <div class="user-profile__info">
+                    <span class="user-profile__name">John Doe</span>
+                    <span class="user-profile__role">Admin</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="navbar">
+            <div class="navbar__left">
+                <button class="navbar__menu-toggle" id="menuToggle">
+                    <i data-feather="menu"></i>
+                </button>
+                <h1 class="navbar__title">Settings</h1>
+            </div>
+            
+            <div class="navbar__right">
+                <div class="navbar__search">
+                    <div class="search-box">
+                        <i data-feather="search"></i>
+                        <input type="text" placeholder="Search settings..." class="search-box__input">
+                    </div>
+                </div>
+                
+                <div class="navbar__actions">
+                    <button class="action-btn theme-toggle" id="themeToggle">
+                        <i data-feather="moon"></i>
+                    </button>
+                    
+                    <div class="dropdown notifications-dropdown">
+                        <button class="action-btn dropdown__trigger" id="notificationsBtn">
+                            <i data-feather="bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <div class="dropdown__menu" id="notificationsMenu">
+                            <div class="dropdown__header">
+                                <h3>Notifications</h3>
+                                <button class="btn-text">Mark all as read</button>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-item__icon">
+                                    <i data-feather="settings"></i>
+                                </div>
+                                <div class="notification-item__content">
+                                    <p>Settings updated successfully</p>
+                                    <span class="notification-item__time">5 minutes ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown profile-dropdown">
+                        <button class="profile-btn dropdown__trigger" id="profileBtn">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="Profile" class="profile-btn__avatar">
+                        </button>
+                        <div class="dropdown__menu" id="profileMenu">
+                            <div class="dropdown__header">
+                                <div class="profile-info">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Profile">
+                                    <div>
+                                        <h4>John Doe</h4>
+                                        <p>john@example.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="dropdown__item">
+                                <i data-feather="user"></i>
+                                <span>Profile</span>
+                            </a>
+                            <a href="settings.html" class="dropdown__item">
+                                <i data-feather="settings"></i>
+                                <span>Settings</span>
+                            </a>
+                            <a href="login.html" class="dropdown__item">
+                                <i data-feather="log-out"></i>
+                                <span>Sign out</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Settings Content -->
+        <div class="content">
+            <!-- Settings Header -->
+            <div class="settings-header">
+                <div class="settings-header__left">
+                    <h2>Settings</h2>
+                    <p>Manage your account and application preferences</p>
+                </div>
+                <div class="settings-header__right">
+                    <button class="btn btn--outline">
+                        <i data-feather="refresh-cw"></i>
+                        Reset to Default
+                    </button>
+                    <button class="btn btn--primary" id="saveSettings">
+                        <i data-feather="save"></i>
+                        Save Changes
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Settings Navigation -->
+            <div class="settings-nav">
+                <button class="settings-nav-item active" data-section="profile">
+                    <i data-feather="user"></i>
+                    <span>Profile</span>
+                </button>
+                <button class="settings-nav-item" data-section="account">
+                    <i data-feather="settings"></i>
+                    <span>Account</span>
+                </button>
+                <button class="settings-nav-item" data-section="notifications">
+                    <i data-feather="bell"></i>
+                    <span>Notifications</span>
+                </button>
+                <button class="settings-nav-item" data-section="security">
+                    <i data-feather="shield"></i>
+                    <span>Security</span>
+                </button>
+                <button class="settings-nav-item" data-section="billing">
+                    <i data-feather="credit-card"></i>
+                    <span>Billing</span>
+                </button>
+            </div>
+            
+            <!-- Settings Sections -->
+            <div class="settings-content">
+                <!-- Profile Section -->
+                <div class="settings-section active" data-section-content="profile">
+                    <div class="settings-card">
+                        <div class="settings-card__header">
+                            <h3>Profile Information</h3>
+                            <p>Update your personal information and profile picture</p>
+                        </div>
+                        <div class="settings-card__body">
+                            <div class="profile-photo-section">
+                                <div class="profile-photo">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Profile Photo">
+                                </div>
+                                <div class="profile-photo-actions">
+                                    <button class="btn btn--outline btn--small">Change Photo</button>
+                                    <button class="btn btn--outline btn--small">Remove</button>
+                                </div>
+                            </div>
+                            
+                            <form class="settings-form">
+                                <div class="form-row">
+                                    <div class="form__group">
+                                        <label class="form__label">First Name</label>
+                                        <input type="text" class="form__input" value="John" required>
+                                    </div>
+                                    <div class="form__group">
+                                        <label class="form__label">Last Name</label>
+                                        <input type="text" class="form__input" value="Doe" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form__group">
+                                    <label class="form__label">Email Address</label>
+                                    <input type="email" class="form__input" value="john@example.com" required>
+                                </div>
+                                
+                                <div class="form__group">
+                                    <label class="form__label">Job Title</label>
+                                    <input type="text" class="form__input" value="Product Manager">
+                                </div>
+                                
+                                <div class="form__group">
+                                    <label class="form__label">Bio</label>
+                                    <textarea class="form__textarea" rows="4" placeholder="Tell us about yourself...">Experienced product manager with a passion for creating user-centered digital experiences.</textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Account Section -->
+                <div class="settings-section" data-section-content="account">
+                    <div class="settings-card">
+                        <div class="settings-card__header">
+                            <h3>Account Preferences</h3>
+                            <p>Customize your account settings and preferences</p>
+                        </div>
+                        <div class="settings-card__body">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Language</h4>
+                                    <p>Choose your preferred language</p>
+                                </div>
+                                <select class="form__select">
+                                    <option value="en">English</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="fr">French</option>
+                                    <option value="de">German</option>
+                                </select>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Timezone</h4>
+                                    <p>Set your local timezone</p>
+                                </div>
+                                <select class="form__select">
+                                    <option value="utc">UTC</option>
+                                    <option value="est">Eastern Time</option>
+                                    <option value="pst">Pacific Time</option>
+                                    <option value="cet">Central European Time</option>
+                                </select>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Theme</h4>
+                                    <p>Choose your preferred theme</p>
+                                </div>
+                                <div class="theme-options">
+                                    <label class="theme-option">
+                                        <input type="radio" name="theme" value="light" checked>
+                                        <span class="theme-preview theme-preview--light"></span>
+                                        <span>Light</span>
+                                    </label>
+                                    <label class="theme-option">
+                                        <input type="radio" name="theme" value="dark">
+                                        <span class="theme-preview theme-preview--dark"></span>
+                                        <span>Dark</span>
+                                    </label>
+                                    <label class="theme-option">
+                                        <input type="radio" name="theme" value="auto">
+                                        <span class="theme-preview theme-preview--auto"></span>
+                                        <span>Auto</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notifications Section -->
+                <div class="settings-section" data-section-content="notifications">
+                    <div class="settings-card">
+                        <div class="settings-card__header">
+                            <h3>Notification Preferences</h3>
+                            <p>Manage how you receive notifications</p>
+                        </div>
+                        <div class="settings-card__body">
+                            <div class="notification-group">
+                                <h4>Email Notifications</h4>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h5>New User Registrations</h5>
+                                        <p>Get notified when new users join</p>
+                                    </div>
+                                    <label class="toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h5>System Updates</h5>
+                                        <p>Receive notifications about system updates</p>
+                                    </div>
+                                    <label class="toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h5>Weekly Reports</h5>
+                                        <p>Get weekly analytics reports via email</p>
+                                    </div>
+                                    <label class="toggle">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="notification-group">
+                                <h4>Push Notifications</h4>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h5>Browser Notifications</h5>
+                                        <p>Show notifications in your browser</p>
+                                    </div>
+                                    <label class="toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h5>Desktop Notifications</h5>
+                                        <p>Show desktop notifications</p>
+                                    </div>
+                                    <label class="toggle">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Security Section -->
+                <div class="settings-section" data-section-content="security">
+                    <div class="settings-card">
+                        <div class="settings-card__header">
+                            <h3>Security Settings</h3>
+                            <p>Manage your account security and privacy</p>
+                        </div>
+                        <div class="settings-card__body">
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h4>Change Password</h4>
+                                    <p>Update your account password</p>
+                                </div>
+                                <button class="btn btn--outline">Change Password</button>
+                            </div>
+                            
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h4>Two-Factor Authentication</h4>
+                                    <p>Add an extra layer of security to your account</p>
+                                </div>
+                                <button class="btn btn--primary">Enable 2FA</button>
+                            </div>
+                            
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h4>Active Sessions</h4>
+                                    <p>Manage your active login sessions</p>
+                                </div>
+                                <button class="btn btn--outline">View Sessions</button>
+                            </div>
+                            
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h4>Download Data</h4>
+                                    <p>Download a copy of your account data</p>
+                                </div>
+                                <button class="btn btn--outline">Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Billing Section -->
+                <div class="settings-section" data-section-content="billing">
+                    <div class="settings-card">
+                        <div class="settings-card__header">
+                            <h3>Billing Information</h3>
+                            <p>Manage your subscription and billing details</p>
+                        </div>
+                        <div class="settings-card__body">
+                            <div class="billing-plan">
+                                <div class="plan-info">
+                                    <h4>Current Plan: Pro</h4>
+                                    <p>$29/month • Billed monthly</p>
+                                </div>
+                                <div class="plan-actions">
+                                    <button class="btn btn--outline">Change Plan</button>
+                                    <button class="btn btn--outline">Cancel Subscription</button>
+                                </div>
+                            </div>
+                            
+                            <div class="billing-method">
+                                <h4>Payment Method</h4>
+                                <div class="payment-card">
+                                    <div class="card-info">
+                                        <i data-feather="credit-card"></i>
+                                        <span>•••• •••• •••• 4242</span>
+                                        <span class="card-expiry">Expires 12/25</span>
+                                    </div>
+                                    <button class="btn btn--outline btn--small">Update</button>
+                                </div>
+                            </div>
+                            
+                            <div class="billing-history">
+                                <h4>Billing History</h4>
+                                <div class="invoice-list">
+                                    <div class="invoice-item">
+                                        <div class="invoice-info">
+                                            <span class="invoice-date">Dec 1, 2023</span>
+                                            <span class="invoice-amount">$29.00</span>
+                                        </div>
+                                        <button class="btn btn--outline btn--small">Download</button>
+                                    </div>
+                                    <div class="invoice-item">
+                                        <div class="invoice-info">
+                                            <span class="invoice-date">Nov 1, 2023</span>
+                                            <span class="invoice-amount">$29.00</span>
+                                        </div>
+                                        <button class="btn btn--outline btn--small">Download</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="js/script.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Exclude Netlify and VSCode config
+.netlify/
+.vscode/
+# Exclude Netlify redirects file
+_redirects
+# Exclude all zip files
+*.zip

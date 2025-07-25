@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - SaaS Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="light-theme">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__logo">
+                <div class="logo__icon">
+                    <i data-feather="layers"></i>
+                </div>
+                <span class="logo__text">SaaSBoard</span>
+            </div>
+            <button class="sidebar__toggle" id="sidebarToggle">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar__nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="index.html" class="nav__link">
+                        <i data-feather="home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="users.html" class="nav__link">
+                        <i data-feather="users"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a href="analytics.html" class="nav__link">
+                        <i data-feather="bar-chart-2"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="settings.html" class="nav__link">
+                        <i data-feather="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar__footer">
+            <div class="user-profile">
+                <div class="user-profile__avatar">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="User Avatar">
+                </div>
+                <div class="user-profile__info">
+                    <span class="user-profile__name">John Doe</span>
+                    <span class="user-profile__role">Admin</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="navbar">
+            <div class="navbar__left">
+                <button class="navbar__menu-toggle" id="menuToggle">
+                    <i data-feather="menu"></i>
+                </button>
+                <h1 class="navbar__title">Analytics</h1>
+            </div>
+            
+            <div class="navbar__right">
+                <div class="navbar__search">
+                    <div class="search-box">
+                        <i data-feather="search"></i>
+                        <input type="text" placeholder="Search..." class="search-box__input">
+                    </div>
+                </div>
+                
+                <div class="navbar__actions">
+                    <button class="action-btn theme-toggle" id="themeToggle">
+                        <i data-feather="moon"></i>
+                    </button>
+                    
+                    <div class="dropdown notifications-dropdown">
+                        <button class="action-btn dropdown__trigger" id="notificationsBtn">
+                            <i data-feather="bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <div class="dropdown__menu" id="notificationsMenu">
+                            <div class="dropdown__header">
+                                <h3>Notifications</h3>
+                                <button class="btn-text">Mark all as read</button>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-item__icon">
+                                    <i data-feather="trending-up"></i>
+                                </div>
+                                <div class="notification-item__content">
+                                    <p>Revenue increased by 12%</p>
+                                    <span class="notification-item__time">1 hour ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown profile-dropdown">
+                        <button class="profile-btn dropdown__trigger" id="profileBtn">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="Profile" class="profile-btn__avatar">
+                        </button>
+                        <div class="dropdown__menu" id="profileMenu">
+                            <div class="dropdown__header">
+                                <div class="profile-info">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Profile">
+                                    <div>
+                                        <h4>John Doe</h4>
+                                        <p>john@example.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="dropdown__item">
+                                <i data-feather="user"></i>
+                                <span>Profile</span>
+                            </a>
+                            <a href="settings.html" class="dropdown__item">
+                                <i data-feather="settings"></i>
+                                <span>Settings</span>
+                            </a>
+                            <a href="login.html" class="dropdown__item">
+                                <i data-feather="log-out"></i>
+                                <span>Sign out</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Analytics Content -->
+        <div class="content">
+            <!-- Analytics Header -->
+            <div class="analytics-header">
+                <div class="analytics-header__left">
+                    <h2>Analytics Dashboard</h2>
+                    <p>Track your business performance and insights</p>
+                </div>
+                <div class="analytics-header__right">
+                    <button class="btn btn--outline">
+                        <i data-feather="download"></i>
+                        Export Report
+                    </button>
+                    <button class="btn btn--primary">
+                        <i data-feather="calendar"></i>
+                        Date Range
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Analytics Tabs -->
+            <div class="analytics-tabs">
+                <button class="analytics-tab active" data-tab="overview">Overview</button>
+                <button class="analytics-tab" data-tab="traffic">Traffic</button>
+                <button class="analytics-tab" data-tab="conversion">Conversion</button>
+                <button class="analytics-tab" data-tab="revenue">Revenue</button>
+            </div>
+            
+            <!-- Key Metrics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card__icon stat-card__icon--primary">
+                        <i data-feather="eye"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <h3 class="stat-card__value" data-target="124567">0</h3>
+                        <p class="stat-card__label">Page Views</p>
+                        <div class="stat-card__change stat-card__change--positive">
+                            <i data-feather="trending-up"></i>
+                            <span>+18.2%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card__icon stat-card__icon--success">
+                        <i data-feather="users"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <h3 class="stat-card__value" data-target="32451">0</h3>
+                        <p class="stat-card__label">Unique Visitors</p>
+                        <div class="stat-card__change stat-card__change--positive">
+                            <i data-feather="trending-up"></i>
+                            <span>+12.5%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card__icon stat-card__icon--warning">
+                        <i data-feather="clock"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <h3 class="stat-card__value" data-target="3.42">0</h3>
+                        <p class="stat-card__label">Avg. Session (min)</p>
+                        <div class="stat-card__change stat-card__change--negative">
+                            <i data-feather="trending-down"></i>
+                            <span>-2.1%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-card__icon stat-card__icon--info">
+                        <i data-feather="target"></i>
+                    </div>
+                    <div class="stat-card__content">
+                        <h3 class="stat-card__value" data-target="4.2">0</h3>
+                        <p class="stat-card__label">Conversion Rate (%)</p>
+                        <div class="stat-card__change stat-card__change--positive">
+                            <i data-feather="trending-up"></i>
+                            <span>+0.8%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts Grid -->
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <h3>Traffic Sources</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="trafficChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="analytics-card">
+                    <h3>Top Pages</h3>
+                    <div class="top-pages-list">
+                        <div class="top-page-item">
+                            <div class="top-page-info">
+                                <span class="top-page-url">/dashboard</span>
+                                <span class="top-page-views">12,847 views</span>
+                            </div>
+                            <div class="top-page-bar">
+                                <div class="top-page-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="top-page-item">
+                            <div class="top-page-info">
+                                <span class="top-page-url">/users</span>
+                                <span class="top-page-views">8,432 views</span>
+                            </div>
+                            <div class="top-page-bar">
+                                <div class="top-page-progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="top-page-item">
+                            <div class="top-page-info">
+                                <span class="top-page-url">/analytics</span>
+                                <span class="top-page-views">6,234 views</span>
+                            </div>
+                            <div class="top-page-bar">
+                                <div class="top-page-progress" style="width: 48%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="top-page-item">
+                            <div class="top-page-info">
+                                <span class="top-page-url">/settings</span>
+                                <span class="top-page-views">4,123 views</span>
+                            </div>
+                            <div class="top-page-bar">
+                                <div class="top-page-progress" style="width: 32%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="top-page-item">
+                            <div class="top-page-info">
+                                <span class="top-page-url">/login</span>
+                                <span class="top-page-views">2,876 views</span>
+                            </div>
+                            <div class="top-page-bar">
+                                <div class="top-page-progress" style="width: 22%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Conversion Funnel -->
+            <div class="analytics-card">
+                <h3>Conversion Funnel</h3>
+                <div class="chart-wrapper">
+                    <canvas id="funnelChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Real-time Analytics -->
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <h3>Real-time Users</h3>
+                    <div class="realtime-stats">
+                        <div class="realtime-number">
+                            <span class="realtime-count" data-target="247">0</span>
+                            <span class="realtime-label">Active Users</span>
+                        </div>
+                        <div class="realtime-activity">
+                            <div class="activity-dot"></div>
+                            <span>Live activity</span>
+                        </div>
+                    </div>
+                    <div class="realtime-locations">
+                        <div class="location-item">
+                            <span class="location-name">United States</span>
+                            <span class="location-count">89</span>
+                        </div>
+                        <div class="location-item">
+                            <span class="location-name">United Kingdom</span>
+                            <span class="location-count">45</span>
+                        </div>
+                        <div class="location-item">
+                            <span class="location-name">Canada</span>
+                            <span class="location-count">32</span>
+                        </div>
+                        <div class="location-item">
+                            <span class="location-name">Germany</span>
+                            <span class="location-count">28</span>
+                        </div>
+                        <div class="location-item">
+                            <span class="location-name">Others</span>
+                            <span class="location-count">53</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analytics-card">
+                    <h3>Device Breakdown</h3>
+                    <div class="device-stats">
+                        <div class="device-item">
+                            <div class="device-icon">
+                                <i data-feather="monitor"></i>
+                            </div>
+                            <div class="device-info">
+                                <span class="device-name">Desktop</span>
+                                <span class="device-percentage">58.2%</span>
+                            </div>
+                            <div class="device-bar">
+                                <div class="device-progress" style="width: 58.2%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="device-item">
+                            <div class="device-icon">
+                                <i data-feather="smartphone"></i>
+                            </div>
+                            <div class="device-info">
+                                <span class="device-name">Mobile</span>
+                                <span class="device-percentage">32.8%</span>
+                            </div>
+                            <div class="device-bar">
+                                <div class="device-progress" style="width: 32.8%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="device-item">
+                            <div class="device-icon">
+                                <i data-feather="tablet"></i>
+                            </div>
+                            <div class="device-info">
+                                <span class="device-name">Tablet</span>
+                                <span class="device-percentage">9.0%</span>
+                            </div>
+                            <div class="device-bar">
+                                <div class="device-progress" style="width: 9%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="js/script.js"></script>
+    <script src="charts/chart-config.js"></script>
+    <script src="js/analytics.js"></script>
+</body>
+</html>
