@@ -38,21 +38,6 @@ Saas Dashboard-KIT/
 - Toast notifications, modals, dropdowns, and more
 - Built for easy deployment on Netlify
 
-## 🛠️ Getting Started
-1. **Clone or download this repo**
-2. **Open `index.html` in your browser** (for local preview)
-3. **To deploy:**
-   - Drag & drop the folder to [Netlify Drop](https://app.netlify.com/drop)
-   - Or use Netlify CLI:
-     ```sh
-     npm install -g netlify-cli
-     netlify deploy --prod
-     ```
-
-## ⚡ Deployment
-- **Production:** [https://saasdashboardkit-bysukh.netlify.app](https://saasdashboardkit-bysukh.netlify.app)
-- Netlify auto-detects static sites, no build step needed.
-- `_redirects` file ensures pretty URLs for main pages.
 
 ## 🌓 Dark Mode
 - Toggle dark/light mode using the moon/sun icon in the navbar.
